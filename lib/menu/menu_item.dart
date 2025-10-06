@@ -21,6 +21,7 @@ List<MenuItem> menuItems = [
     icon: Icons.settings,
     link: '/settings',
   ),
+  MenuItem(title: 'Tema', subtitle: 'Seleccionar tema', icon: Icons.twenty_three_mp_rounded, link: '/theme-selector'),
   MenuItem(
     title: 'Cerrar sesión',
     subtitle: 'View your profile',
