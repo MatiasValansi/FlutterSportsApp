@@ -39,7 +39,9 @@ class _SelectorView extends ConsumerWidget{
       return RadioListTile(
         title: Text('Color $index', style: TextStyle(color: colorList[index]),),
         value: index, groupValue: selectedColor, onChanged: (value){
-        ref.read(selectedColorProvider.notifier).state = value!;
+        ref.read(themeProvider.notifier).selectColor(value!); //Para que cambie el estado del color en tiempo real
+        ref.read(selectedColorProvider.notifier).state = value;
+        
       },);
     });
   }
