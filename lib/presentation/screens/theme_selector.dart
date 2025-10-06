@@ -4,16 +4,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intro_riverpod_notificaciones_pagerview/core/theme/app_theme.dart';
 import 'package:intro_riverpod_notificaciones_pagerview/presentation/providers/theme_provider.dart';
 
-class ThemeSelector extends StatelessWidget{
+class ThemeSelector extends ConsumerWidget{
   ThemeSelector({super.key});
 
   final colorList = colorOptions;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+
+    final isDarkMode = ref.watch(themeProvider).isDarkMode;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Seleccionar Tema'),
+        actions: [IconButton(onPressed: (){
+          ref.read(themeProvider.notifier).toggleDarkMode(!isDarkMode);
+        }, icon: Icon(isDarkMode? Icons.light_mode: Icons.dark_mode))],
       ),
       body: _SelectorView(colorList: colorList),
     );
