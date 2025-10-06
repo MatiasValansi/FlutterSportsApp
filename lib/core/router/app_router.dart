@@ -5,6 +5,7 @@ import 'package:intro_riverpod_notificaciones_pagerview/presentation/screens/hom
 import 'package:intro_riverpod_notificaciones_pagerview/presentation/screens/playerDetails.dart';
 import 'package:intro_riverpod_notificaciones_pagerview/presentation/screens/logIn.dart';
 import 'package:intro_riverpod_notificaciones_pagerview/presentation/screens/settings.dart';
+import 'package:intro_riverpod_notificaciones_pagerview/presentation/screens/theme_selector.dart';
 
 final appRouter = GoRouter(
   initialLocation: '/login',
@@ -25,5 +26,7 @@ final appRouter = GoRouter(
     GoRoute(path: '/create-player',
     builder: (context, state) => CreatePlayer(),
     ),
+    GoRoute(path: '/theme-selector',
+    builder: (context, state) => ThemeSelector(),)
   ]
 );
