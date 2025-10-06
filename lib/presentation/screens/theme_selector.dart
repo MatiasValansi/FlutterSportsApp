@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intro_riverpod_notificaciones_pagerview/presentation/providers/theme_provider.dart';
 
 class ThemeSelector extends StatelessWidget{
   const ThemeSelector({super.key});
@@ -10,10 +12,9 @@ class ThemeSelector extends StatelessWidget{
   }
 }
 
-class _SelectorView extends StatelessWidget{
+class _SelectorView extends ConsumerWidget{
   
   final List<Color> colorList;
-  int selectedColor = 0;
 
   _SelectorView({
     super.key,
@@ -21,11 +22,16 @@ class _SelectorView extends StatelessWidget{
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+
+    int selectedColor = ref.watch(selectedColorProvider);
+
     return ListView.builder(itemCount: colorList.length, itemBuilder: (context, index){
 
-      return RadioListTile(value: index, groupValue: selectedColor, onChanged: (value){
-        selectedColor = value!;
+      return RadioListTile(
+        title: Text('Color $index', style: TextStyle(color: colorList[index]),),
+        value: index, groupValue: selectedColor, onChanged: (value){
+        ref.read(selectedColorProvider.notifier).state = value!;
       },);
     });
   }
