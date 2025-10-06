@@ -28,4 +28,15 @@ class AppTheme {
       brightness: this.isDarkMode ? Brightness.dark : Brightness.light,
     );    
   }
+
+  AppTheme copyWith({
+    int? selectedColor,
+    bool? isDarkMode,
+  }){
+
+    return AppTheme(
+      selectedColor: selectedColor ?? this.selectedColor,
+      isDarkMode: isDarkMode ?? this.isDarkMode,
+    );
+  }
 }

@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intro_riverpod_notificaciones_pagerview/core/theme/app_theme.dart';
 import 'package:intro_riverpod_notificaciones_pagerview/presentation/providers/theme_provider.dart';
 
 class ThemeSelector extends StatelessWidget{
-  const ThemeSelector({super.key});
+  ThemeSelector({super.key});
+
+  final colorList = colorOptions;
 
   @override
   Widget build(BuildContext context) {
-    return _SelectorView();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Seleccionar Tema'),
+      ),
+      body: _SelectorView(colorList: colorList),
+    );
   }
 }
 
